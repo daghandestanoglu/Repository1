@@ -13,6 +13,10 @@ print("╚═══════════════════════�
 print("Seçiminiz nedir?: ", end="")
 Secim = input()
 print(f"{Secim}. seçeneği seçtiniz.")
+if Secim == "1":
+    print("Hesap Makinası seçtiniz.")
+    import Moduller.SubInterface1
+
 # 201 ╔
 # 205 ═
 # 187 ╗
