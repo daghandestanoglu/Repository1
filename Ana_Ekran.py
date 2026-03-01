@@ -10,8 +10,8 @@ print("║                        ║")
 print("║                        ║")
 print("║ C-) Çıkış              ║")
 print("╚════════════════════════╝")
-print("Seçiminiz nedir?: ",end="")
-Secim= input()
+print("Seçiminiz nedir?: ", end="")
+Secim = input()
 print(f"{Secim}. seçeneği seçtiniz.")
 # 201 ╔
 # 205 ═
@@ -21,4 +21,3 @@ print(f"{Secim}. seçeneği seçtiniz.")
 # 188 ╝
 # 185 ╣
 # 204 ╠
-
