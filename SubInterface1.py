@@ -13,3 +13,4 @@ print("╚═══════════════════════�
 print("Seçiminiz nedir?: ",end="")
 Secim= input()
 print(f"{Secim}. seçeneği seçtiniz.")
+#a
