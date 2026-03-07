@@ -27,11 +27,12 @@ elif Secim == "0":
     print("Çıkış yapılıyor...")
 else:
     print("Geçersiz seçim. Lütfen tekrar deneyin.")
+    
     # 201 ╔
     # 205 ═
     # 187 ╗
     # 186 ║
     # 200 ╚
     # 188 ╝
-    # 185 ╣s
+    # 185 ╣
     # 204 ╠
