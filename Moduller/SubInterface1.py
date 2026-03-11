@@ -10,13 +10,11 @@ def AltMenu1():
     print("║                        ║")
     print("║  0-Geri Dön            ║")
     print("╚════════════════════════╝")
-
-    x = float(input("Birinci sayıyı giriniz: "))
-    y = float(input("İkinci sayıyı giriniz: "))
     print("Seçiminiz nedir?: ", end="")
     secim = input()
     print(f"{secim}. seçeneği seçtiniz.")
-
+    x = float(input("Birinci sayıyı giriniz: "))
+    y = float(input("İkinci sayıyı giriniz: "))
     if secim == "1":
         print(f"{x} + {y} = {x+y}")
     elif secim == "2":

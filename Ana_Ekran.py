@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import Moduller.SubInterface1          # sadece tanım, çalıştırılmaz
-# import Moduller.SubInterface2        # gerekirse aynı şekilde
-# import Moduller.SubInterface3        # gerekirse aynı şekilde
+import Moduller.SubInterface2        # gerekirse aynı şekilde
+import Moduller.SubInterface3        # gerekirse aynı şekilde
 
-def ana_menu():
+def AnaMenu():
     while True:                         # ← ana menü döngüsü
         print("╔════════════════════════╗")
         print("║        UYGULAMA        ║")
@@ -38,4 +38,4 @@ def ana_menu():
 
 # ------------------- Çalıştırma -------------------
 if __name__ == "__main__":
-    ana_menu()
+    AnaMenu()
