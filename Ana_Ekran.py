@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import Moduller.SubInterface1          # sadece tanım, çalıştırılmaz
-import Moduller.SubInterface2        # gerekirse aynı şekilde
-import Moduller.SubInterface3        # gerekirse aynı şekilde
+import AraYuzler.SubInterface1          # sadece tanım, çalıştırılmaz
+import AraYuzler.SubInterface2        # gerekirse aynı şekilde
+import AraYuzler.SubInterface3    # gerekirse aynı şekilde
 
 def AnaMenu():
     while True:                         # ← ana menü döngüsü
@@ -22,13 +22,13 @@ def AnaMenu():
 
         if secim == "1":
             print("Hesap Makinası seçtiniz.")
-            Moduller.SubInterface1.AltMenu1()   # menüyü çalıştır
+            AraYuzler.SubInterface1.AltMenu1()   # menüyü çalıştır
         elif secim == "2":
             print("Oyunlar seçtiniz.")
-            # Moduller.SubInterface2.some_func()
+            AraYuzler.SubInterface2.AltMenu2()
         elif secim == "3":
             print("Çizimler seçtiniz.")
-            # Moduller.SubInterface3.some_func()
+            AraYuzler.SubInterface3.AltMenu3()
         elif secim == "0":
             print("Çıkış yapılıyor...")
             break                               # döngüden çık, program biter
