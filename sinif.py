@@ -1,0 +1,6 @@
+d=open("Deneme1.txt","w")
+d.write(f"Ad {input('isim?:')}")
+d.write("\n")
+d.write(f"Soyad {input('Soyad?:')}")
+d.write("\n")
+d.write(f"Numara {input('Numara?:')}")

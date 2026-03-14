@@ -13,6 +13,9 @@ def AltMenu1():
     print("Seçiminiz nedir?: ", end="")
     secim = input()
     print(f"{secim}. seçeneği seçtiniz.")
+    if secim == "0":
+        print("Ana menüye dönülüyor...")
+        return "back_to_main
     x = float(input("Birinci sayıyı giriniz: "))
     y = float(input("İkinci sayıyı giriniz: "))
     if secim == "1":
@@ -28,9 +31,6 @@ def AltMenu1():
         print(f"{x} * {y} = {x*y}")
     elif secim == "5":
         print(f"{x} ^ {y} = {x**y}")
-    elif secim == "0":
-        print("Ana menüye dönülüyor...")
-        return "back_to_main"
     else:
         print("Geçersiz seçim. Tekrar deneyin.")
         AltMenu1()          # aynı fonksiyonu tekrar çalıştır
