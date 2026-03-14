@@ -36,6 +36,6 @@ def AnaMenu():
             print("Geçersiz seçim. Lütfen tekrar deneyin.")
             # döngü otomatik tekrarla, menü tekrar gösterilir
 
-# ------------------- Çalıştırma -------------------
+ # ------------------- Çalıştırma -------------------
 if __name__ == "__main__":
     AnaMenu()
