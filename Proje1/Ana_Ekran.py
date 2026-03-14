@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import AraYuzler.SubInterface1          # sadece tanım, çalıştırılmaz
-import AraYuzler.SubInterface2        # gerekirse aynı şekilde
-import AraYuzler.SubInterface3    # gerekirse aynı şekilde
+import Proje1.AraYuzler.SubInterface1          # sadece tanım, çalıştırılmaz
+import Proje1.AraYuzler.SubInterface2        # gerekirse aynı şekilde
+import Proje1.AraYuzler.SubInterface3    # gerekirse aynı şekilde
 
 def AnaMenu():
     while True:                         # ← ana menü döngüsü

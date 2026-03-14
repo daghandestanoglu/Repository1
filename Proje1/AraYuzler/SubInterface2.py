@@ -1,6 +1,6 @@
-import OyunlarProje.tetris
-import OyunlarProje.SnakeGame
-import OyunlarProje.Zindan
+import Proje1.OyunlarProje.tetris
+import Proje1.OyunlarProje.SnakeGame
+import Proje1.OyunlarProje.Zindan
 def AltMenu2():
     print("╔════════════════════════╗")
     print("║     Oyunlar            ║")
