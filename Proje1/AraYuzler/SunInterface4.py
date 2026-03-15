@@ -10,6 +10,7 @@ import sys
 def tzdata_yukle():
     try:
         import tzdata
+        return True
     except ImportError:
         cevap = input("tzdata paketi bulunamadi. Yuklemek ister misiniz? (Y/n): ")
         if cevap.lower().strip() == "y":
