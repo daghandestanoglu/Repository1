@@ -15,7 +15,7 @@ def AltMenu1():
     print(f"{secim}. seçeneği seçtiniz.")
     if secim == "0":
         print("Ana menüye dönülüyor...")
-        return "back_to_main
+        return "back_to_main"
     x = float(input("Birinci sayıyı giriniz: "))
     y = float(input("İkinci sayıyı giriniz: "))
     if secim == "1":
