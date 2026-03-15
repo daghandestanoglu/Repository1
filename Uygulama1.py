@@ -22,13 +22,13 @@ def AnaMenu():
 
         if secim == "1":
             print("Hesap Makinası seçtiniz.")
-            AraYuzler.SubInterface1.AltMenu1()   # menüyü çalıştır
+            Proje1.AraYuzler.SubInterface1.AltMenu1()   # menüyü çalıştır
         elif secim == "2":
             print("Oyunlar seçtiniz.")
-            AraYuzler.SubInterface2.AltMenu2()
+            Proje1.AraYuzler.SubInterface2.AltMenu2()
         elif secim == "3":
             print("Çizimler seçtiniz.")
-            AraYuzler.SubInterface3.AltMenu3()
+            Proje1.AraYuzler.SubInterface3.AltMenu3()
         elif secim == "0":
             print("Çıkış yapılıyor...")
             break                               # döngüden çık, program biter

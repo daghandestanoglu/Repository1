@@ -18,11 +18,11 @@ def AltMenu2():
     secim = input("Seçiminiz nedir?: ")
     print(f"{secim}. seçeneği seçtiniz.")
     if secim == "1":
-        OyunlarProje.tetris.run_game()
+        Proje1.OyunlarProje.tetris.run_game()
     elif secim == "2":
-        OyunlarProje.SnakeGame.run_snake()
+        Proje1.OyunlarProje.SnakeGame.run_snake()
     elif secim == "3":
-        OyunlarProje.Zindan.start_game()
+        Proje1.OyunlarProje.Zindan.start_game()
     elif secim == "0":
         return "back_to_main"
     else:
