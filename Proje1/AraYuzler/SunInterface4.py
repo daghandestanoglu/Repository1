@@ -49,6 +49,38 @@ def kronometre():
     time.sleep(0.8)
 
 
+def zamanlayici():
+    print("ZAMANLAYICI")
+    print("-" * 30)
+    
+    dakika = int(input("Dakika girin: "))
+    saniye = int(input("Saniye girin: "))
+    
+    toplam_saniye = dakika * 60 + saniye
+    
+    if toplam_saniye <= 0:
+        print("Gecerli bir sure girin!")
+        return
+    
+    print("\nZamanlayici basladi! Durdurmak icin Ctrl+C'ye bas.")
+    print("-" * 30)
+    
+    try:
+        for kalan in range(toplam_saniye, 0, -1):
+            dk = kalan // 60
+            sn = kalan % 60
+            print(f"\r Kalan sure: {dk:02}:{sn:02}", end="")
+            time.sleep(1)
+        
+        print("\n" + "=" * 30)
+        print("SURE DOLDU!")
+        print("=" * 30)
+    
+    except KeyboardInterrupt:
+        print("\n\nZamanlayici iptal edildi.")
+        return
+
+
 
      #KOD BAŞLANGIÇ#
 def AltMenu4():
@@ -78,6 +110,7 @@ def AltMenu4():
             kronometre()
         elif secim == "3":
             print("Zamanlıyıcı alarmı seçtiniz.")
+            zamanlayici()
         else:
             print("Geçersiz seçim.")
             AltMenu4()
