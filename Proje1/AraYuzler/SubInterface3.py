@@ -52,3 +52,5 @@ def AltMenu3():
             turtle.bye()
         except Exception:
             pass
+if __name__ == "__main__":
+    AltMenu3()

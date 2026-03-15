@@ -1,4 +1,4 @@
-def AltMenu4()
+def AltMenu4():
     print("╔════════════════════════╗")
     print("║          Saat          ║")
     print("╠════════════════════════╣")
@@ -16,4 +16,15 @@ def AltMenu4()
     if secim == "0":
         print("Ana menüye dönülüyor...")
         return "back_to_main"
-    return
+    elif secim == "1":
+        print("Dünya saatini seçtiniz.")
+    elif secim == "2":
+        print("Kronometreyi seçtiniz.")
+    elif secim == "3":
+        print("Zamanlıyıcı alarmı seçtiniz.")
+    else:
+        print("Geçersiz seçim.")
+        AltMenu4()
+        return
+if __name__ == "__main__":
+    AltMenu4()
