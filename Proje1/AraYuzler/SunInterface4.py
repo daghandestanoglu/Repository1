@@ -30,23 +30,35 @@ def dunya_saatleri():
     time.sleep(0.8)
 
 
-
 def kronometre():
-    print("Kronometreyi başlatmak için Enter'a bas...")
+    print("Kronometreyi baslatmak icin Enter'a bas...")
     input()
     
     baslangic = time.time()
-    print("Kronometre başladı! Durdurmak için Enter'a bas...")
-    input()
+    print("Kronometre basladi! Durdurmak icin Ctrl+C'ye bas.")
     
-    sure = time.time() - baslangic
+    try:
+        while True:
+            gecen = time.time() - baslangic
+            dakika = int(gecen // 60)
+            saniye = int(gecen % 60)
+            milisaniye = int((gecen % 1) * 100)
+            print(f"\r Gecen sure: {dakika:02}:{saniye:02}.{milisaniye:02}", end="")
+            time.sleep(0.01)
     
-    dakika = int(sure // 60)
-    saniye = int(sure % 60)
-    milisaniye = int((sure % 1) * 100)
-    
-    print(f"Geçen süre: {dakika:02}:{saniye:02}.{milisaniye:02}")
-    time.sleep(0.8)
+    except KeyboardInterrupt:
+        gecen = time.time() - baslangic
+        dakika = int(gecen // 60)
+        saniye = int(gecen % 60)
+        milisaniye = int((gecen % 1) * 100)
+        print(f"\n\nSonuc: {dakika:02}:{saniye:02}.{milisaniye:02}")
+        print("Kronometre durduruldu.")
+        
+        import msvcrt
+        while msvcrt.kbhit():
+            msvcrt.getwch()
+        
+    time.sleep(1.2)
 
 
 def zamanlayici():
@@ -75,6 +87,7 @@ def zamanlayici():
         print("\n" + "=" * 30)
         print("SURE DOLDU!")
         print("=" * 30)
+        time.sleep(0.8)
     
     except KeyboardInterrupt:
         print("\n\nZamanlayici iptal edildi.")
