@@ -1,8 +1,32 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import time
+import subprocess
+import sys
+
+import subprocess
+import sys
+
+def tzdata_yukle():
+    try:
+        import tzdata
+    except ImportError:
+        cevap = input("tzdata paketi bulunamadi. Yuklemek ister misiniz? (Y/n): ")
+        if cevap.lower().strip() == "y":
+            print("Yukleniyor...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "tzdata"])
+            print("Yukleme tamamlandi.")
+            return True
+        else:
+            print("Yukleme iptal edildi. Dunya saatleri calisмayacak.")
+            return False
+
+
 
 def dunya_saatleri():
+    if not tzdata_yukle():
+        return
+
     cities = {
         "Ankara":    "Europe/Istanbul",
         "İstanbul":  "Europe/Istanbul",
