@@ -2,6 +2,7 @@
 import Proje1.AraYuzler.SubInterface1          # sadece tanım, çalıştırılmaz
 import Proje1.AraYuzler.SubInterface2        # gerekirse aynı şekilde
 import Proje1.AraYuzler.SubInterface3    # gerekirse aynı şekilde
+import Proje1.AraYuzler.SunInterface4
 
 def AnaMenu():
     while True:                         # ← ana menü döngüsü
@@ -11,7 +12,7 @@ def AnaMenu():
         print("║ 1-) Hesap Makinası     ║")
         print("║ 2-) Oyunlar            ║")
         print("║ 3-) Çizimler           ║")
-        print("║                        ║")
+        print("║ 4-) Saat               ║")
         print("║                        ║")
         print("║                        ║")
         print("║ 0-) Çıkış              ║")
@@ -29,6 +30,9 @@ def AnaMenu():
         elif secim == "3":
             print("Çizimler seçtiniz.")
             Proje1.AraYuzler.SubInterface3.AltMenu3()
+        elif secim == "4":
+            print("Saati seçtiniz.")
+            Proje1.AraYuzler.SunInterface4.AltMenu4()
         elif secim == "0":
             print("Çıkış yapılıyor...")
             break                               # döngüden çık, program biter
