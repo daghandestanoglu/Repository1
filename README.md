@@ -1,4 +1,4 @@
-#Basit Uygulama
+Basit Uygulama
 4 uygulama ve 14 alt uygulaması var.
 
 
