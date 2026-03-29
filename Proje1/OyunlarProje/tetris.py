@@ -12,22 +12,22 @@ def colorama_kur():
         colorama.init()
         return True
     except ImportError:
-    cevap = input("colorama paketi bulunamadı. Yüklemek ister misiniz? (E/h): ")
-    if cevap.lower() in ('e', 'evet', 'y', 'yes', ''):
-        print("Yükleniyor...")
-        try:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "colorama"])
-            import colorama
-            colorama.init()
-            print("Colorama başarıyla yüklendi!")
-            return True
-        except Exception as e:
-            print(f"Yükleme başarısız: {e}")
-            print("Program renkler olmadan çalışacak.")
+        cevap = input("colorama paketi bulunamadı. Yüklemek ister misiniz? (E/h): ")
+        if cevap.lower() in ('e', 'evet', 'y', 'yes', ''):
+            print("Yükleniyor...")
+            try:
+                subprocess.check_call([sys.executable, "-m", "pip", "install", "colorama"])
+                import colorama
+                colorama.init()
+                print("Colorama başarıyla yüklendi!")
+                return True
+            except Exception as e:
+                print(f"Yükleme başarısız: {e}")
+                print("Program renkler olmadan çalışacak.")
+                return False
+        else:
+            print("Yükleme iptal edildi. Renkler çalışmayacak.")
             return False
-    else:
-        print("Yükleme iptal edildi. Renkler çalışmayacak.")
-        return False
             
 # Colorama'yi dene
 colorama_kur()
