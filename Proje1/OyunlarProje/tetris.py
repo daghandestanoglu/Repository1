@@ -12,7 +12,7 @@ def colorama_kur():
         colorama.init()
         return True
     except ImportError:
-        cevap = input("colorama paketi bulunamadı. Yüklemek ister misiniz? (E/h): ")
+        cevap = input("Colorama paketi bulunamadı. Yüklemek ister misiniz? (E/h): ")
         if cevap.lower() in ('e', 'evet', 'y', 'yes', ''):
             print("Yükleniyor...")
             try:
