@@ -1,5 +1,5 @@
-import Proje2.Urunara
-import Proje2.Urunyaz
+import Proje2.Modl1
+import Proje2.Modl3
 def UrunEk():
    
     Ad  =  input("Ürün adı: ").strip().lower()
@@ -12,11 +12,11 @@ def UrunEk():
         print("Ad ve sayı boş bırakılamaz.")
         return
     
-    Urunler=Proje2.Urunara.UrunAra()
+    Urunler=Proje2.Modl1.UrunAra()
     
     for urun in Urunler:
         if urun["ad"].lower()== Ad:
             print("Ürün ismi zaten girilmiş, değer değiştrimek için Ürün Güncelle'yi kullanın")
     Urunler.append({"ad":Ad,"sayi":sayi})
-    Proje2.Urunyaz.UrunYaz(Urunler)
+    Proje2.Modl3.UrunYaz(Urunler)
     print(f"{Ad} envantere eklendi.")
