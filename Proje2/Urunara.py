@@ -1,0 +1,2 @@
+def UrunAra():
+    aranan = input("")
