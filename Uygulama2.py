@@ -1,5 +1,5 @@
 
-import Proje2.UrunEkle
+import Proje2.Modl2
 def AnaMenu():
     while True:
         print("╔════════════════════════╗")
@@ -15,7 +15,7 @@ def AnaMenu():
         print("╚════════════════════════╝")
         secim = input("Seçiminiz nedir?:").strip()
         if secim == "1":
-            Proje2.UrunEkle.UrunEk()
+            Proje2.Modl2.UrunEk()
         elif secim == "2":
             #
         elif secim == "3":
