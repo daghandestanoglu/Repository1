@@ -1,5 +1,8 @@
-
+import Proje2.Modl5
 import Proje2.Modl2
+import Proje2.Modl1
+import Proje2.Modl6
+
 def AnaMenu():
     while True:
         print("╔════════════════════════╗")
@@ -17,15 +20,15 @@ def AnaMenu():
         if secim == "1":
             Proje2.Modl2.UrunEk()
         elif secim == "2":
-            #
+            Proje2.Modl5.Urunsil()
         elif secim == "3":
-            #
+            Proje2.Modl1.UrunAra()
         elif secim == "4":
-            #
+            Proje2.Modl6.UrunGuncelle()
         elif secim == "0":
-            #
+            break
         else:
             print("Geçersiz Sayı girdiniz, bir daha deneyin.")
 
 if  __name__ == "__main__":
-    Anamenu()
+    AnaMenu()

@@ -18,4 +18,4 @@ def UrunAra():
         for k in sonuclar:
             print(f"{k['ad']:<20}{k['sayi']}")
         print(f"{'-'*35}")
-        print(f"Toplam {len(sonuclar)} kişi.")
+        print(f"Toplam {len(sonuclar)} ürün.")
