@@ -21,3 +21,6 @@ class Kisi:
     def __init__(self, ad, yas):
         self.ad = ad
         self.yas = yas
+k1= Kisi ("Ali",2)
+print(k1)
+print(k1.ad)
