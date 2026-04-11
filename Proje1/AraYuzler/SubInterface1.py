@@ -1,4 +1,5 @@
 def AltMenu1():
+    
     print("╔════════════════════════╗")
     print("║     Hesap Makinesi     ║")
     print("╠════════════════════════╣")
