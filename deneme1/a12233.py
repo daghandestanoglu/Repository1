@@ -1,26 +1,12 @@
-def topla(*toplancaklar):
-    sum=0
-    for k in toplancaklar:
-        sum=sum+k
-    return sum 
-def menu_yap(*girdi):
-    uzun=0
-    for a in girdi:
-        if uzun<len(a):
-            uzun=len(a)
-    print(f"{'-'*(uzun+2)}")
-    print(f"|{'Menü':^{uzun}}|")
-    for k in girdi:
-        print(f"|{k}",end="")
-        print(" "*(uzun-len(k)),end="")
-        print("|")
-menu_yap('abc','absadaf','gafa',"ömjhgfdmnbvcx")
-
-
-class Kisi:
-    def __init__(self, ad, yas):
-        self.ad = ad
-        self.yas = yas
-k1= Kisi ("Ali",2)
-print(k1)
-print(k1.ad)
+class Payment:
+    def __init__(self,price):
+        self.__final_price = price*1.05
+    def fp(self):
+        return (self.__final_price)
+    def sale(self):
+        self.__final_price=self.__final_price*0.9
+book=Payment(10)
+#print(book.__final_price)
+print(book.fp())
+book.sale()
+print(book.fp())
