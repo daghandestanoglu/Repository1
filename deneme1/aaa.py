@@ -1,30 +1,40 @@
-import time
-import os
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication
 
-d = open("deneme4.txt","w")
-d.write("Dahan\n")
-d.write("Giray\n")
-d.write("Destan\n")
-d.close()
-d = open("deneme4.txt","r")
-print(d.read())
-d.close()
-time.sleep(3)  # Always close the file first
-d = open("deneme4.txt","a")
-d.write("Ekleme?\n")
-d.close()
-d = open("deneme4.txt","r")
-print(d.read())
-d.close()
-with open("deneme4.txt","a") as d:
-    d.write(input("Bi şeyler yaz:").strip().lower())
-with open("deneme4.txt","r") as d:
-    print(d.read())
-    d.seek(0)
-    for i, satir in enumerate(d, start=1):  # enumerate satır numarası verir
-        if "ali" in satir.lower():
-            print(f"Bulundu: '{satir.strip()}'  -> Satır numarası: {i}")  
-time.sleep(3)  # Wait 5 seconds
+app = QApplication([])
+pencere = uic.loadUi("deneme1/untitled.ui")
 
+def verileri_al():
+    # 1. kutudaki metni oku
+    metin1 = ikinci_pencere.textEdit.toPlainText()
+    # 2. kutudaki metni oku
+    metin2 = ikinci_pencere.textEdit_2.toPlainText()
+    
+    print(f"Kullanıcı: {metin1}")
 
-os.remove("deneme4.txt")  # Delete the file
+    # DİKKAT: Şifreyi tırnak içine aldık "123" çünkü textEdit metin döndürür
+    if metin2 != "123":
+        print("Yanlış şifre!")
+        return False
+    else:
+        print("Şifre doğru, Ayar penceresi açılıyor...")
+        ayar_penceresini_ac() # Şifre doğruysa bu fonksiyonu çağırıyoruz
+        return True
+
+def ayar_penceresini_ac():
+    global ayar_pencere
+    ayar_pencere = uic.loadUi("deneme1/Ayar.ui")
+    ayar_pencere.show()
+    # Opsiyonel: Giriş penceresini kapatmak istersen:
+    # ikinci_pencere.close()
+
+def tiklandi():
+    global ikinci_pencere 
+    ikinci_pencere = uic.loadUi("deneme1/Giris.ui")
+    ikinci_pencere.show()
+    ikinci_pencere.pushButton.clicked.connect(verileri_al)
+
+pencere.pushButton.clicked.connect(tiklandi)
+
+pencere.show()
+app.exec_()
