@@ -1,0 +1,39 @@
+import sys
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from Proje3.Ana_men_den_1 import Ui_MainWindow
+from Proje3.Urun_ekle_pencere import UrunEklePencere
+from Proje3.Urun_cikar_pencere import UrunCikarPencere
+
+
+class AnaPencere(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+        # Buton bağlantıları
+        self.ui.pushButton.clicked.connect(self.urun_ekle)
+        self.ui.pushButton_2.clicked.connect(self.urun_cikar)
+        self.ui.pushButton_3.clicked.connect(self.urun_ara)
+        self.ui.pushButton_4.clicked.connect(self.urun_guncelle)
+        self.ui.pushButton_5.clicked.connect(self.close)
+
+    def urun_ekle(self):
+        pencere = UrunEklePencere()
+        pencere.exec()  # şimdilik test
+
+    def urun_cikar(self):
+        pencere = UrunCikarPencere()
+        pencere.exec()
+
+    def urun_ara(self):
+        print("Ürün Ara tıklandı")
+
+    def urun_guncelle(self):
+        print("Ürün Güncelle tıklandı")
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    pencere = AnaPencere()
+    pencere.show()
+    sys.exit(app.exec())
