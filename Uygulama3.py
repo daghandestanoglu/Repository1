@@ -3,7 +3,8 @@ from PyQt6.QtWidgets import QApplication, QMainWindow
 from Proje3.Ana_men_den_1 import Ui_MainWindow
 from Proje3.Urun_ekle_pencere import UrunEklePencere
 from Proje3.Urun_cikar_pencere import UrunCikarPencere
-
+from Proje3.Urun_ara_pencere import UrunAraPencere
+from Proje3.Urun_guncelle_pencere import UrunGuncellePencere
 
 class AnaPencere(QMainWindow):
     def __init__(self):
@@ -27,10 +28,12 @@ class AnaPencere(QMainWindow):
         pencere.exec()
 
     def urun_ara(self):
-        print("Ürün Ara tıklandı")
+        pencere = UrunAraPencere()
+        pencere.exec()
 
     def urun_guncelle(self):
-        print("Ürün Güncelle tıklandı")
+        pencere = UrunGuncellePencere()
+        pencere.exec()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
