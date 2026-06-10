@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 from PyQt6.QtWidgets import QDialog
 from Proje3.Urun_Guncelle import Ui_Dialog
-import Proje2.Modl4
-import Proje2.Modl3
+from Proje3.db_manager import get_connection
+from mysql.connector import Error
 
 class UrunGuncellePencere(QDialog):
     def __init__(self):
@@ -12,7 +13,7 @@ class UrunGuncellePencere(QDialog):
         self.ui.pushButton.clicked.connect(self.urun_guncelle)
 
     def urun_guncelle(self):
-        ad = self.ui.lineEdit.text().strip()
+        ad = self.ui.lineEdit.text().strip().lower()
         sayi_str = self.ui.lineEdit_2.text().strip()
 
         if not ad or not sayi_str:
@@ -27,16 +28,24 @@ class UrunGuncellePencere(QDialog):
             self.ui.textEdit.setText("Sayı sıfırdan büyük olmalı.")
             return
 
-        urunler = Proje2.Modl4.Urunoku()
-        guncel = False
-        for urun in urunler:
-            if urun["ad"].lower() == ad.lower():
-                urun["sayi"] = yeni_sayi
-                guncel = True
-                break
+        db = get_connection()
+        if not db:
+            self.ui.textEdit.setText("Veritabanı bağlantısı başarısız!")
+            return
 
-        if guncel:
-            Proje2.Modl3.UrunYaz(urunler)
+        try:
+            cursor = db.cursor()
+            # Ürün var mı kontrolü
+            cursor.execute("SELECT * FROM ogrenciler WHERE ad = %s", (ad,))
+            if not cursor.fetchone():
+                self.ui.textEdit.setText(f"{ad} bulunamadı.")
+                return
+
+            # MySQL UPDATE Sorgusu
+            cursor.execute("UPDATE ogrenciler SET sayi = %s WHERE ad = %s", (yeni_sayi, ad))
+            db.commit()
             self.ui.textEdit.setText(f"{ad} sayısı {yeni_sayi} olarak güncellendi.")
-        else:
-            self.ui.textEdit.setText(f"{ad} bulunamadı.")
+        except Error as e:
+            self.ui.textEdit.setText(f"Hata: {e}")
+        finally:
+            db.close()

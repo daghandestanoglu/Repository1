@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 from PyQt6.QtWidgets import QDialog
 from Proje3.Urun_Ekle import Ui_Dialog
-import Proje2.Modl4
-import Proje2.Modl3
+from Proje3.db_manager import get_connection  # Veritabanı bağlantımız
+from mysql.connector import Error
 
 class UrunEklePencere(QDialog):
     def __init__(self):
@@ -10,7 +11,7 @@ class UrunEklePencere(QDialog):
         self.ui.setupUi(self)
         self.ui.textEdit.setReadOnly(True)
 
-        # Label yazıları
+        # Arayüz etiketlerini ayarlıyoruz
         self.ui.label.setText("Ürün Adı:")
         self.ui.label_2.setText("Ürün Sayısı:")
         self.ui.pushButton.setText("Ekle")
@@ -34,12 +35,26 @@ class UrunEklePencere(QDialog):
             self.ui.textEdit.setText("Sayı sıfırdan büyük olmalı.")
             return
 
-        urunler = Proje2.Modl4.Urunoku()
-        for urun in urunler:
-            if urun["ad"].lower() == ad:
+        db = get_connection()
+        if not db:
+            self.ui.textEdit.setText("Veritabanı bağlantısı başarısız!")
+            return
+
+        try:
+            cursor = db.cursor(dictionary=True)
+            
+            # Ürün zaten var mı kontrolü
+            cursor.execute("SELECT * FROM ogrenciler WHERE ad = %s", (ad,))
+            if cursor.fetchone():
                 self.ui.textEdit.setText("Ürün zaten var, Güncelle'yi kullanın.")
                 return
 
-        urunler.append({"ad": ad, "sayi": sayi})
-        Proje2.Modl3.UrunYaz(urunler)
-        self.ui.textEdit.setText(f"{ad} envantere eklendi.")
+            # MySQL INSERT Sorgusu
+            sorgu = "INSERT INTO ogrenciler (ad, sayi) VALUES (%s, %s)"
+            cursor.execute(sorgu, (ad, sayi))
+            db.commit()
+            self.ui.textEdit.setText(f"{ad} veritabanına başarıyla eklendi.")
+        except Error as e:
+            self.ui.textEdit.setText(f"Hata oluştu: {e}")
+        finally:
+            db.close()

@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 from PyQt6.QtWidgets import QDialog
 from Proje3.Urun_Cıkar import Ui_Dialog
-import Proje2.Modl4
-import Proje2.Modl3
+from Proje3.db_manager import get_connection
+from mysql.connector import Error
 
 class UrunCikarPencere(QDialog):
     def __init__(self):
@@ -12,16 +13,29 @@ class UrunCikarPencere(QDialog):
         self.ui.pushButton.clicked.connect(self.urun_sil)
 
     def urun_sil(self):
-        ad = self.ui.lineEdit.text().strip()
+        ad = self.ui.lineEdit.text().strip().lower()
         if not ad:
             self.ui.textEdit.setText("Ürün adı boş bırakılamaz.")
             return
 
-        urunler = Proje2.Modl4.Urunoku()
-        yeni_liste = [k for k in urunler if k["ad"].lower() != ad.lower()]
+        db = get_connection()
+        if not db:
+            self.ui.textEdit.setText("Veritabanı bağlantısı başarısız!")
+            return
 
-        if len(yeni_liste) == len(urunler):
-            self.ui.textEdit.setText(f"{ad} bulunamadı.")
-        else:
-            Proje2.Modl3.UrunYaz(yeni_liste)
-            self.ui.textEdit.setText(f"{ad} başarıyla silindi.")
+        try:
+            cursor = db.cursor()
+            # Ürün var mı kontrolü
+            cursor.execute("SELECT * FROM ogrenciler WHERE ad = %s", (ad,))
+            if not cursor.fetchone():
+                self.ui.textEdit.setText(f"{ad} bulunamadı.")
+                return
+
+            # MySQL DELETE Sorgusu
+            cursor.execute("DELETE FROM ogrenciler WHERE ad = %s", (ad,))
+            db.commit()
+            self.ui.textEdit.setText(f"{ad} başarıyla veritabanından silindi.")
+        except Error as e:
+            self.ui.textEdit.setText(f"Hata: {e}")
+        finally:
+            db.close()
