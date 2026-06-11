@@ -35,16 +35,16 @@ class UrunGuncellePencere(QDialog):
 
         try:
             cursor = db.cursor()
-            # Ürün var mı kontrolü
-            cursor.execute("SELECT * FROM ogrenciler WHERE ad = %s", (ad,))
+            # urunler tablosunda kontrol
+            cursor.execute("SELECT * FROM urunler WHERE ad = %s", (ad,))
             if not cursor.fetchone():
                 self.ui.textEdit.setText(f"{ad} bulunamadı.")
                 return
 
-            # MySQL UPDATE Sorgusu
-            cursor.execute("UPDATE ogrenciler SET sayi = %s WHERE ad = %s", (yeni_sayi, ad))
+            # urunler tablosunda güncelleme
+            cursor.execute("UPDATE urunler SET sayi = %s WHERE ad = %s", (yeni_sayi, ad))
             db.commit()
-            self.ui.textEdit.setText(f"{ad} sayısı {yeni_sayi} olarak güncellendi.")
+            self.ui.textEdit.setText(f"{ad} miktarı {yeni_sayi} olarak güncellendi.")
         except Error as e:
             self.ui.textEdit.setText(f"Hata: {e}")
         finally:

@@ -25,14 +25,14 @@ class UrunCikarPencere(QDialog):
 
         try:
             cursor = db.cursor()
-            # Ürün var mı kontrolü
-            cursor.execute("SELECT * FROM ogrenciler WHERE ad = %s", (ad,))
+            # urunler tablosunda kontrol
+            cursor.execute("SELECT * FROM urunler WHERE ad = %s", (ad,))
             if not cursor.fetchone():
                 self.ui.textEdit.setText(f"{ad} bulunamadı.")
                 return
 
-            # MySQL DELETE Sorgusu
-            cursor.execute("DELETE FROM ogrenciler WHERE ad = %s", (ad,))
+            # urunler tablosundan silme
+            cursor.execute("DELETE FROM urunler WHERE ad = %s", (ad,))
             db.commit()
             self.ui.textEdit.setText(f"{ad} başarıyla veritabanından silindi.")
         except Error as e:

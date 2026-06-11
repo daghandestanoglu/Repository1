@@ -22,15 +22,15 @@ class UrunAraPencere(QDialog):
 
         try:
             cursor = db.cursor(dictionary=True)
-            # LIKE sorgusu ile arama yapıyoruz (boş bırakılırsa tümünü listeler)
-            sorgu = "SELECT * FROM ogrenciler WHERE ad LIKE %s"
+            # urunler tablosunda arama
+            sorgu = "SELECT * FROM urunler WHERE ad LIKE %s"
             cursor.execute(sorgu, (f"%{aranan}%",))
             sonuclar = cursor.fetchall()
 
             if not sonuclar:
                 self.ui.textEdit.setText(f"{aranan} ile eşleşen bulunamadı.")
             else:
-                metin = f"{'Ad':20}{'Sayı'}\n{'-'*30}\n"
+                metin = f"{'Ürün Adı':20}{'Adet'}\n{'-'*30}\n"
                 for k in sonuclar:
                     metin += f"{k['ad']:<20}{k['sayi']}\n"
                 metin += f"{'-'*30}\nToplam {len(sonuclar)} ürün listelendi."
