@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +75,12 @@ WSGI_APPLICATION = 'envanter_web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'okul_projesi',      # db_manager.py'daki veritabanı adın
+        'USER': 'root',
+        'PASSWORD': 'Mysqlsifr123!', # db_manager.py'daki şifren
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
