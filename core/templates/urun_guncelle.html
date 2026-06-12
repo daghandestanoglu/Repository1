@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border rounded-3">
+            <div class="card-header bg-dark text-white fw-bold">
+                ✏️ Ürün Miktarını Güncelle
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Ürün Adı</label>
+                        <input type="text" class="form-control text-capitalize" value="{{ urun.ad }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="urun_sayisi" class="form-label">Yeni Ürün Sayısı (Adet)</label>
+                        <input type="number" class="form-control" id="urun_sayisi" name="urun_sayisi" value="{{ urun.sayi }}" min="1" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning fw-bold">Değişiklikleri Kaydet</button>
+                        <a href="{% url 'dashboard' %}" class="btn btn-secondary">İptal</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

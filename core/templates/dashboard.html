@@ -6,6 +6,7 @@
         <div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
             <div class="container-fluid py-2">
                 <h1 class="display-5 fw-bold text-dark">Envanter Yönetim Uygulaması</h1>
+                <a href="{% url 'urun_ekle' %}" class="btn btn-primary btn-lg my-3">➕ Yeni Ürün Ekle</a>
                 <p class="col-md-8 fs-4 text-muted">MySQL veritabanındaki dinamik veriler başarıyla web arayüzüne bağlandı.</p>
             </div>
         </div>
@@ -34,17 +35,25 @@
                         <tr>
                             <th>Ürün Adı</th>
                             <th class="text-end" style="width: 200px;">Adet (Sayı)</th>
-                        </tr>
+                            <th class="text-center" style="width: 150px;">İşlemler</th> </tr>
                     </thead>
                     <tbody>
                         {% for urun in urunler %}
                         <tr>
                             <td class="text-capitalize">{{ urun.ad }}</td>
                             <td class="text-end fw-bold text-secondary">{{ urun.sayi }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'urun_guncelle' urun.id %}" class="btn btn-warning btn-sm me-1">✏️ Güncelle</a>
+
+                                <form action="{% url 'urun_sil' urun.id %}" method="POST" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">🗑️ Sil</button>
+                                </form>
+                            </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="2" class="text-center text-muted py-4">Envanterde hiç ürün bulunmuyor.</td>
+                            <td colspan="3" class="text-center text-muted py-4">Envanterde hiç ürün bulunmuyor.</td>
                         </tr>
                         {% endfor %}
                     </tbody>

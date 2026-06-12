@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border rounded-3">
+            <div class="card-header bg-dark text-white fw-bold">
+                ➕ Yeni Ürün Ekle
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="urun_adi" class="form-label">Ürün Adı</label>
+                        <input type="text" class="form-control" id="urun_adi" name="urun_adi" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="urun_sayisi" class="form-label">Ürün Sayısı (Adet)</label>
+                        <input type="number" class="form-control" id="urun_sayisi" name="urun_sayisi" min="1" required>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">Veritabanına Kaydet</button>
+                        <a href="{% url 'dashboard' %}" class="btn btn-secondary">İptal / Geri Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
